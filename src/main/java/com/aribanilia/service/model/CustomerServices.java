@@ -45,7 +45,7 @@ public class CustomerServices {
         logger.info("Start Services updateCustomer : " + req.getId() + "-" + req.getName() + "-" + req.getBirthDate());
         ResponseService responseService = new ResponseService();
         try {
-            TblCustomer customer = customerDao.findById(Long.parseLong(req.getId())).orElseThrow(() -> new RestAccountNotFoundException("Customer : " + req.getId() + "not found"));
+            TblCustomer customer = customerDao.findById(Long.parseLong(req.getId())).orElseThrow(() -> new RestAccountNotFoundException("Customer : " + req.getId() + " not found"));
             customer.setName(req.getName().toUpperCase());
             customer.setBirthDate(req.getBirthDate());
             customerDao.save(customer);
@@ -63,7 +63,7 @@ public class CustomerServices {
         logger.info("Start Services deleteCustomer : " + req.getId());
         ResponseService responseService = new ResponseService();
         try {
-            TblCustomer customer = customerDao.findById(Long.parseLong(req.getId())).orElseThrow(() -> new RestAccountNotFoundException("Customer : " + req.getId() + "not found"));
+            TblCustomer customer = customerDao.findById(Long.parseLong(req.getId())).orElseThrow(() -> new RestAccountNotFoundException("Customer : " + req.getId() + " not found"));
             customerDao.delete(customer);
             ResponseUtil.setResponse(responseService, Constants.RESPONSE.APPROVED, true);
         } catch (Exception e) {

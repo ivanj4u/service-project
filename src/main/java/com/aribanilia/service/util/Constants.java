@@ -5,6 +5,7 @@ public class Constants {
     public enum RESPONSE {
         APPROVED("00", "Approved"),
         INVALID_ACCOUNT_NOT_FOUND("13", "Account Not Found"),
+        WRONG_FORMAT("30", "Wrong Format"),
         ;
 
         private String code, desc;
