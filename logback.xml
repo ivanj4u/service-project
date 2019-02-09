@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+    <property name="LOG_PATH" value="/Users/ivanaribanilia/Project/Workspace-Github/Project-Java/service-auth/log" />
+    <property name="LOG_NAME" value="application" />
+
+    <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>%d{dd-MM-yyyy HH:mm:ss.SSS} %magenta([%thread]) %highlight(%-5level) %logger{36} - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <appender name="LOG_ERROR" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${LOG_PATH}/${LOG_NAME}.error</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>${LOG_PATH}/${LOG_NAME}.%d{yyyy-MM-dd}.error</fileNamePattern>
+            <maxHistory>100</maxHistory>
+            <totalSizeCap>250MB</totalSizeCap>
+        </rollingPolicy>
+        <encoder>
+            <pattern>%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <appender name="LOG_FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${LOG_PATH}/${LOG_NAME}.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>${LOG_PATH}/${LOG_NAME}.%d{yyyy-MM-dd}.log</fileNamePattern>
+            <maxHistory>100</maxHistory>
+            <totalSizeCap>250MB</totalSizeCap>
+        </rollingPolicy>
+        <encoder>
+            <pattern>%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{35} - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <logger name="java.io" level="info" additivity="false">
+        <appender-ref ref="CONSOLE" />
+        <appender-ref ref="LOG_FILE" />
+        <appender-ref ref="LOG_ERROR" />
+    </logger>
+    <logger name="org.hibernate" level="info" additivity="false">
+        <appender-ref ref="CONSOLE" />
+        <appender-ref ref="LOG_FILE" />
+        <appender-ref ref="LOG_ERROR" />
+    </logger>
+    <logger name="id.co.pegadaian" level="info" additivity="false">
+        <appender-ref ref="CONSOLE" />
+        <appender-ref ref="LOG_FILE" />
+        <appender-ref ref="LOG_ERROR" />
+    </logger>
+    <logger name="org.springframework.web" level="info" additivity="false">
+        <appender-ref ref="CONSOLE" />
+        <appender-ref ref="LOG_FILE" />
+        <appender-ref ref="LOG_ERROR" />
+    </logger>
+
+    <root level="info">
+        <appender-ref ref="CONSOLE" />
+        <appender-ref ref="LOG_FILE" />
+    </root>
+
+    <root level="error">
+        <appender-ref ref="LOG_ERROR" />
+        <appender-ref ref="CONSOLE" />
+    </root>
+
+</configuration>
