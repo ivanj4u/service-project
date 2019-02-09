@@ -5,8 +5,10 @@ import com.aribanilia.service.dto.customer.RestCustomerAddRequest;
 import com.aribanilia.service.dto.customer.RestCustomerDeleteRequest;
 import com.aribanilia.service.dto.customer.RestCustomerInquiryRequest;
 import com.aribanilia.service.dto.customer.RestCustomerUpdateRequest;
+import com.aribanilia.service.entity.TblCustomer;
 import com.aribanilia.service.model.CustomerServices;
 import com.aribanilia.service.util.ValidationHelper;
+import io.swagger.annotations.ApiOperation;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,6 +27,7 @@ public class CustomerController {
 
     private final static Logger logger = LoggerFactory.getLogger(CustomerController.class);
 
+    @ApiOperation(value = "Add Customer", response = TblCustomer.class)
     @PreAuthorize("#oauth2.hasScope('INSERT')")
     @RequestMapping(value = "/add", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody
@@ -44,6 +47,7 @@ public class CustomerController {
         return responseService;
     }
 
+    @ApiOperation(value = "Update Customer", response = TblCustomer.class)
     @PreAuthorize("#oauth2.hasScope('UPDATE')")
     @RequestMapping(value = "/update", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody
@@ -63,6 +67,7 @@ public class CustomerController {
         return responseService;
     }
 
+    @ApiOperation(value = "Delete Customer", response = Boolean.class)
     @PreAuthorize("#oauth2.hasScope('DELETE')")
     @RequestMapping(value = "/delete", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody
@@ -82,6 +87,7 @@ public class CustomerController {
         return responseService;
     }
 
+    @ApiOperation(value = "Inquiry Customer", response = TblCustomer.class)
     @PreAuthorize("#oauth2.hasScope('READ')")
     @RequestMapping(value = "/inquiry", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody
