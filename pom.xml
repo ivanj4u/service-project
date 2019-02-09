@@ -20,7 +20,7 @@
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 		<java.version>1.8</java.version>
         <spring.framework.version>2.1.1.RELEASE</spring.framework.version>
-        <spring.oauth.version>2.3.3.RELEASE</spring.oauth.version>
+        <spring.oauth.version>2.3.4.RELEASE</spring.oauth.version>
         <mysql.version>5.1.39</mysql.version>
 	</properties>
 
